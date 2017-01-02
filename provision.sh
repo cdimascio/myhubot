@@ -22,3 +22,7 @@ dpkg -s nodejs &>/dev/null || {
 command -v yo &>/dev/null || {
 	npm install -g yo generator-hubot
 }
+
+pkg -s libexpat1-dev &>/dev/null || {
+	apt-get install -y libexpat1-dev	
+}
