@@ -17,6 +17,7 @@ dpkg -s nodejs &>/dev/null || {
 
 	# create alias from nodejs to node
 	ln -s /usr/bin/nodejs /usr/bin/node
+	apt-get install -y build-essential
 }
 
 command -v yo &>/dev/null || {
