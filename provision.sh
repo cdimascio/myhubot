@@ -1,6 +1,8 @@
 #!/bin/bash
 
 
+#provision runs with root
+
 apt-get -y update
 
 # apt-get using dpkg (debian package) behind the scenes
@@ -27,3 +29,12 @@ command -v yo &>/dev/null || {
 pkg -s libexpat1-dev &>/dev/null || {
 	apt-get install -y libexpat1-dev	
 }
+
+# copy hubot upstart file to /etc/init
+cp /vagrant/upstart/myhubot.conf /etc/init/myhubot.conf
+
+# -u user -i simulate initial login (set up vagrant env including HOME env), then run npm install
+sudo -u vagrant -i sh -c 'cd /vagrant/myhubot; npm install'
+
+# restart our hubot service - restart or start it
+service myhubot restart
