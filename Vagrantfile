@@ -19,7 +19,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "prod" do |prod|
   	prod.vm.box = "dummy"
 
-	provisioning(dev, ["dev", "ubuntu"])
+	provisioning(prod, ["prod", "ubuntu"])
 
   	prod.vm.provider "aws" do |aws, override|
   		aws.region_config "us-east-1", :ami => "ami-a95044be"
