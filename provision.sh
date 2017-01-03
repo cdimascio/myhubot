@@ -32,9 +32,13 @@ pkg -s libexpat1-dev &>/dev/null || {
 
 # copy hubot upstart file to /etc/init
 cp /vagrant/upstart/myhubot.conf /etc/init/myhubot.conf
+machine=$1
+# upstart expectes the override file must match name of conf file myhubut
+cp /vagrant/upstart/myhubot.$machine.override /etc/init/myhubot.override
 
 # -u user -i simulate initial login (set up vagrant env including HOME env), then run npm install
-sudo -u vagrant -i sh -c 'cd /vagrant/myhubot; npm install'
+run_as_user=$2
+sudo -u $run_as_user -i sh -c 'cd /vagrant/myhubot; npm install'
 
 # restart our hubot service - restart or start it
 service myhubot restart

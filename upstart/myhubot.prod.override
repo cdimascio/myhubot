@@ -1,0 +1,8 @@
+# start as system service, but dont use root, use vagrant
+setuid ubuntu
+
+# environment scoped only to this service
+env HOME="/home/ubuntu"
+
+env HUBOT_HIPCHAT_JID=664246_4640236@chat.hipchat.com
+env HUBOT_HIPCHAT_PASSWORD=camera12
